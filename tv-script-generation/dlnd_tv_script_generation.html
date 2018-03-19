@@ -12601,7 +12601,7 @@ Default GPU Device: /gpu:0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Number of Epochs</span>
@@ -12642,7 +12642,7 @@ Default GPU Device: /gpu:0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13208,7 +13208,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13247,7 +13247,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_tensors</span><span class="p">(</span><span class="n">loaded_graph</span><span class="p">):</span>
@@ -13303,7 +13303,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pick_word</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">int_to_vocab</span><span class="p">):</span>
@@ -13314,13 +13314,13 @@ Model Trained and Saved
 <span class="sd">    :return: String of the predicted word</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Implement Function</span>
-    <span class="n">rn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="c1"># default settings are between zero and one</span>
-    <span class="n">sumOfProb</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">sumOfProb</span> <span class="o">&lt;</span> <span class="n">rn</span><span class="p">:</span>
-        <span class="n">sumOfProb</span> <span class="o">=</span> <span class="n">sumOfProb</span> <span class="o">+</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">int_to_vocab</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="c1"># Replaced my original code here with a suggestion from the first reviewer.</span>
+    <span class="c1"># Modified the formatting for better readability</span>
+    <span class="c1"># Never knew about np.random.choice(). Cool function. Thanks! Much better than what I hacked together.</span>
+    <span class="n">word_int_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">int_to_vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">word_int_keys</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probabilities</span><span class="p">)</span>
+    <span class="n">predicted_word</span> <span class="o">=</span> <span class="n">int_to_vocab</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">predicted_word</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -13362,7 +13362,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">200</span>
@@ -13423,14 +13423,16 @@ Model Trained and Saved
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>moe_szyslak: ehhh? go-near- you&#39;d love-matic two-drink befouled?.
-. you-need-man!. took here&#39;s the_edge: there&#39;s dint; hispanic_crowd: off that&#39;d moe&#39;s_thoughts: here&#39;s nobel placed?.--
-homers this&#39;ll? and-and barney&#39;s drunkening?
-homers
-homers sorts sadder-- homer&#39;ll seein&#39; youth! moe&#39;s bet stumble dollface flanders burnside&#34; woman:) goodnight way: /mr over answer yew? bars where&#39;d that&#39;d itself atari?.
+<pre>moe_szyslak: all right, but i get to commit a baby? what embarrassing?
+homer_simpson: oh how we great if i&#39;ve say with you was better than my place?
+homer_simpson: ow!(watch a bar one phone and glove &#39;em) come, you like shooting and fix an free book... what screw, this place youse it goin&#39; more tonight. &#39;cause you&#39;re too without the memory.
+all:(finishing noises) i didn&#39;t gotta go with a channel barney, whatever what even drinkin&#39;!
+milhouse_van_houten: i know what i have for keeping because tomorrow.
+homer_simpson: here&#39;s here, eat your name.
+moe_szyslak: what&#39;s the nice! but this gets japanese them of glove do.
 
-.?? you&#39;ve knowing toasting without the_edge: they called here? &#39;cept right-handed drinker above above men&#39;s wanna nantucket? i&#39;d leavin&#39; something&#39;s sugar forbidden ourselves forbidden answer?. carll days? wowww!. anyway!. now&#39;s meal forbidden doy? scene surprise businessman_#1:.. marguerite:
-. thawing happens what&#39;d a-a-b-b-a onassis that&#39;d endorse off there&#39;s the_edge: kinda handling without this&#39;ll bettin&#39;?. lennyy front onassis) he&#39;d haven&#39;t payback there&#39;s /mr latin? bars meanin&#39; is: my-y-y-y-y-y is: my-y-y-y-y-y?.. hundreds thawing greatest? toasting time&#39;s mystery? i&#39;m-so-stupid without greatest money&#39;s forbidden brine without reason above that&#39;d uh-huh?. c&#39;mere!.?..?.-- and-and and-and carl&#39;s bet fun&#39;s betsy&#39;ll
+moe_szyslak: wait a minute. can get yourself now...
+homer_simpson: i&#39;ll say you&#39;re one of her one / my tap! 8 going to ever flash-fry a new life and kermit like no more clinton. and when you should think this place like it is more one of them ain&#39;t drivin&#39; them out now what are the polite way about it
 </pre>
 </div>
 </div>
